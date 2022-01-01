@@ -1,0 +1,13 @@
+---
+
+- name: debug
+  ansible.builtin.debug:
+    msg: 'Hello world! from {{ inventory_hostname }}'
+
+- name: Grub cmdline_linux_default
+  ansible.builtin.replace:
+    path: /etc/default/grub
+    regexp: '"quiet splash"'
+    replace: '"quiet splash video=hyperv_fb:1920x1080"'
+  become: true
+  notify: Update Grub
