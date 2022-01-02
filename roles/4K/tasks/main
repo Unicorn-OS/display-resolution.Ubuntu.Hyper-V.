@@ -1,9 +1,5 @@
 ---
 
-- name: debug
-  ansible.builtin.debug:
-    msg: 'Hello world! from {{ inventory_hostname }}'
-
 - name: Change existing resolution - Grub
   ansible.builtin.replace:
     path: /etc/default/grub
