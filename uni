@@ -2,5 +2,5 @@
 - hosts: local
 
   roles:
-  # - role: 1080p  
-  - role: 4K
+  - role: 1K
+#  - role: 4K
