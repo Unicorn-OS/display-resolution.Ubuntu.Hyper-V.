@@ -1,5 +1,5 @@
 ---
-- name: Change existing resolution - Grub
+- name: Change existing resolution - any
   ansible.builtin.replace:
     path: /etc/default/grub
     regexp: 'video=hyperv_fb:(\d+)x(\d+)'
@@ -7,10 +7,18 @@
   become: true
   notify: Update Grub
 
-- name: New resolution - Grub
+- name: New resolution - Default
   ansible.builtin.replace:
     path: /etc/default/grub
     regexp: '"quiet splash"'
     replace: '"quiet splash video=hyperv_fb:1920x1080"'
+  become: true
+  notify: Update Grub
+
+- name: New resolution - Vagrant
+  ansible.builtin.replace:
+    path: /etc/default/grub
+    regexp: '"quiet"'
+    replace: '"quiet video=hyperv_fb:1920x1080"'
   become: true
   notify: Update Grub
